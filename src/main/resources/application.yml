@@ -8,3 +8,4 @@ spring:
       - classpath:config/application-security.yml
       - classpath:config/application-app.yml
       - classpath:config/application-logging.yml
+      - classpath:config/application-redis.yml

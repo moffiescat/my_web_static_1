@@ -29,6 +29,20 @@ async function loadProfile() {
     }
 }
 
+async function loadVisitCount() {
+    try {
+        const response = await fetch('/api/visit/today');
+        const result = await response.json();
+        
+        // 从ApiResponse中获取data字段
+        const visitCount = result.data;
+        
+        document.getElementById('visitCount').textContent = `今日访问量：${visitCount}`;
+    } catch (error) {
+        console.error('获取访问量失败:', error);
+    }
+}
+
 function updateAuthUI() {
     const username = localStorage.getItem('username');
     const email = localStorage.getItem('email');
@@ -66,4 +80,5 @@ if (window.location.pathname === '/' || window.location.pathname === '/index.htm
 
 displayDateTime();
 loadProfile();
+loadVisitCount();
 updateAuthUI();
